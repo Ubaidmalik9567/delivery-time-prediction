@@ -5,19 +5,19 @@ stages:
     - data/raw/swiggy.csv
     - src/data/data_cleaning.py
     outs:
-    - data/cleaned/swiggy_cleaned.csv
+    - data/external/swiggy_cleaned.csv
 
-  # data_preparation:
-  #   cmd: python src/data/data_preparation.py
-  #   params:
-  #   - Data_Preparation.test_size
-  #   - Data_Preparation.random_state
-  #   deps:
-  #   - data/cleaned/swiggy_cleaned.csv
-  #   - src/data/data_preparation.py
-  #   outs:
-  #   - data/interim/train.csv
-  #   - data/interim/test.csv
+  make_dataset:
+    cmd: python src/data/make_dataset.py
+    params:
+    - Data_Preparation.test_size
+    - Data_Preparation.random_state
+    deps:
+    - data/external/swiggy_cleaned.csv
+    - src/data/make_dataset.py
+    outs:
+    - data/interim/train.csv
+    - data/interim/test.csv
 
   # data_preprocessing:
   #   cmd: python src/features/data_preprocessing.py

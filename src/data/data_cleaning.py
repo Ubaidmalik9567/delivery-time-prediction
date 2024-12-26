@@ -238,7 +238,7 @@ def perform_data_cleaning(data: pd.DataFrame, saved_data_path: Path) -> None:
 if __name__ == "__main__":
 
     root_path = Path(__file__).parent.parent.parent
-    cleaned_data_save_dir = root_path / "data" / "cleaned"
+    cleaned_data_save_dir = root_path / "data" / "external"
 
     
     cleaned_data_save_dir.mkdir(exist_ok=True,parents=True)
