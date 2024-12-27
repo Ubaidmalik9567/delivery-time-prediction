@@ -1,61 +1,81 @@
-# Register model
-import json
 import mlflow
-import os
 import dagshub
+import json
+from pathlib import Path
+from mlflow import MlflowClient
 import logging
+import dagshub
+import mlflow.client
 
-# Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+# create logger
+logger = logging.getLogger("register_model")
+logger.setLevel(logging.INFO)
+
+# console handler
+handler = logging.StreamHandler()
+handler.setLevel(logging.INFO)
+
+# add handler to logger
+logger.addHandler(handler)
+
+# create a fomratter
+formatter = logging.Formatter(fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# add formatter to handler
+handler.setFormatter(formatter)
+
+# initialize dagshub
+
+
+dagshub.init(repo_owner='Ubaidmalik9567',
+             repo_name='delivery-time-prediction',
+             mlflow=True)
 
 # set the mlflow tracking server
-dagshub.init(repo_owner='Ubaidmalik9567',repo_name='delivery-time-prediction', mlflow=True)
 mlflow.set_tracking_uri("https://dagshub.com/Ubaidmalik9567/delivery-time-prediction.mlflow")
 
-def load_model_info(file_path):
-    try:
-        with open(file_path, 'r') as file:
-            model_info = json.load(file)
-        logging.info(f"Model information loaded from {file_path}.")
-        return model_info
-    except FileNotFoundError:
-        logging.error(f"File not found: {file_path}")
-        raise
-    except json.JSONDecodeError:
-        logging.error(f"Error decoding JSON from file: {file_path}")
-        raise
 
-
-def register_model(model_name, model_info):
-    #Register the model with MLflow and transition its stage to Staging.
-    try:
-        logging.info(f"Registering model: {model_name}.")
-        model_uri = f"runs:/{model_info['run_id']}/{model_info['model_path']}"
-        model_version = mlflow.register_model(model_uri, model_name)
-        logging.info(f"Model registered with version: {model_version.version}.")
+def load_model_information(file_path):
+    with open(file_path) as f:
+        run_info = json.load(f)
         
-        client = mlflow.tracking.MlflowClient()
-        client.transition_model_version_stage(
-            name=model_name,
-            version=model_version.version,
-            stage="Staging"
-        )
-        logging.info(f"Model {model_name} transitioned to Staging stage.")
-    except Exception as e:
-        logging.error(f"Failed to register model {model_name}: {e}")
-        raise
+    return run_info
 
-def main():
-    try:
-        model_info_path = 'reports/model_experiment_info.json'
-        model_info = load_model_info(model_info_path)
-        model_name = "save_model"
-        
-        register_model(model_name, model_info)
-        logging.info("Model registration process completed successfully.")
-    except Exception as e:
-        logging.error(f"Error in main function: {e}")
-        raise
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    # root path
+    root_path = Path(__file__).parent.parent.parent
+    
+    # run information file path
+    run_info_path = root_path / "run_information.json"
+    
+    # register the model
+    run_info = load_model_information(run_info_path)
+    
+    # get the run id
+    run_id = run_info["run_id"]
+    model_name = run_info["model_name"]
+    
+    # model to register path
+    model_registry_path = f"runs:/{run_id}/{model_name}"
+    
+    
+    # register the model
+    model_version = mlflow.register_model(model_uri=model_registry_path,
+                                          name=model_name)
+    
+    
+    # get the model version
+    registered_model_version = model_version.version
+    registered_model_name = model_version.name
+    logger.info(f"The latest model version in model registry is {registered_model_version}")
+    
+    # update the stage of the model to staging
+    client = MlflowClient()
+    client.transition_model_version_stage(
+        name=registered_model_name,
+        version=registered_model_version,
+        stage="Staging"
+    )
+    
+    logger.info("Model pushed to Staging stage")
+    

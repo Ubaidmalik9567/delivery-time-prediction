@@ -9,8 +9,8 @@ stages:
       size: 7772212
     - path: src/data/data_cleaning.py
       hash: md5
-      md5: 2036fc12e4a2717fab5180fb84a974f8
-      size: 9166
+      md5: f0384c50297e277f86ebed59d6cb21fc
+      size: 9070
     outs:
     - path: data/external/swiggy_cleaned.csv
       hash: md5
@@ -146,5 +146,5 @@ stages:
       size: 216
     - path: src/models/register_model.py
       hash: md5
-      md5: c8d2e8c88f8fe9a83af2a33cb03e8dcd
-      size: 2099
+      md5: fd6b7755da32b1d2834d502b7fcb77ac
+      size: 2100
