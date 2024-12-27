@@ -240,18 +240,14 @@ if __name__ == "__main__":
     root_path = Path(__file__).parent.parent.parent
     cleaned_data_save_dir = root_path / "data" / "external"
 
-    
     cleaned_data_save_dir.mkdir(exist_ok=True,parents=True)
     cleaned_data_filename = "swiggy_cleaned.csv"
-    # data save path
+
     cleaned_data_save_path = cleaned_data_save_dir / cleaned_data_filename
-    # data load path
     data_load_path = root_path / "data" / "raw" / "swiggy.csv"
     
-    # load the data
     df = load_data(data_load_path)
     logger.info("Data read successfully")
     
-    # clean the data and save
     perform_data_cleaning(data=df, saved_data_path=cleaned_data_save_path)
     logger.info("Data cleaned and saved")
