@@ -1,57 +1,45 @@
-delivery time prediction
-==============================
+# Delivery Time Prediction API
 
-Build End-to-End project with MLOPs that predicts food delivery time in minutes
+## Overview
+This project focuses on predicting the delivery time for orders, enhancing operational efficiency, customer satisfaction, and optimizing financial performance in the competitive  delivery industry.
 
-Project Organization
-------------
+## Goal
+- **Predict delivery time in minutes** from restaurant to customer for on-time service and better planning.
 
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+## Business Use Case
+### On-Time Delivery Benefits
+- **Customer Satisfaction**: Accurate delivery times foster trust and loyalty.
+- **Operational Efficiency**: Smart resource allocation and scheduling for improved delivery management.
+- **Cost Optimization**: Reduces operational costs through better route and time management.
 
+### Key Benefits
+1. **Enhanced Customer Experience**
+   - **Increased Satisfaction and Retention**: Timely deliveries keep customers happy and returning.
+   - **Improved Transparency**: Customers appreciate accurate ETAs, leading to trust and reduced uncertainty.
 
---------
+2. **Operational Efficiency**
+   - **Better Resource Allocation**: Optimized route planning and scheduling reduce idle times.
+   - **Real-Time Decision-Making**: Dynamic allocation of delivery resources ensures on-time arrivals.
+   - **Scalable Operations**: Strategic planning accommodates growing demand without overloading resources.
 
-<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+3. **Financial Optimization**
+   - **Cost Control**: Better route planning reduces fuel, maintenance, and labor costs.
+   - **Revenue Increase**: Satisfied customers increase order frequency, driving revenue.
+
+4. **Strategic Decision-Making**
+   - **Demand Planning**: Predict peak periods to optimize resource allocation.
+   - **Expansion Strategy**: Data-driven insights guide geographical expansion and market strategy.
+
+## Tools & Technologies
+This project was built using **MLOps** techniques for seamless integration, model tracking, and deployment. The tools and technologies used include:
+
+- **DVC (Data Version Control)**: Used for versioning datasets and managing machine learning pipelines.
+- **MLflow**: Used for model tracking, logging, and managing experiment results.
+- **FastAPI**: Used for building the RESTful API that serves the prediction model.
+- **Docker**: Utilized for containerizing the application for consistent deployment across environments.
+- **AWS CodeDeploy**: Used for automating application deployments to AWS infrastructure.
+
+## Conclusion
+By predicting delivery times accurately, this project aims to enhance customer experience, improve operational efficiency, and maximize financial optimization. The implementation of this model will drive strategic decision-making, improve service quality, and contribute to cost-effective scaling in the competitive food delivery industry.
+
+---
