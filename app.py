@@ -146,3 +146,33 @@ def do_predictions(data: Data):
    
 if __name__ == "__main__":
     uvicorn.run(app="app:app",host="0.0.0.0",port=8000)
+
+
+
+
+
+# example input for http://0.0.0.0:8000/docs
+    '''
+    {
+    "ID": "12345",
+    "Delivery_person_ID": "DP001",
+    "Delivery_person_Age": "25",
+    "Delivery_person_Ratings": "4.5",
+    "Restaurant_latitude": 28.6139,
+    "Restaurant_longitude": 77.209,
+    "Delivery_location_latitude": 28.7041,
+    "Delivery_location_longitude": 77.1025,
+    "Order_Date": "2025-01-01",
+    "Time_Orderd": "12:30",
+    "Time_Order_picked": "12:45",
+    "Weatherconditions": "Sunny",
+    "Road_traffic_density": "Medium",
+    "Vehicle_condition": 5,
+    "Type_of_order": "Meal",
+    "Type_of_vehicle": "Bike",
+    "multiple_deliveries": "1",
+    "Festival": "No",
+    "City": "Urban"
+}
+
+    '''
