@@ -56,7 +56,6 @@ jobs:
         run: |
           python scripts/promote_model_to_prod.py
       
-      
       - name: Log in to Docker Hub
         if: success()
         uses: docker/login-action@v2

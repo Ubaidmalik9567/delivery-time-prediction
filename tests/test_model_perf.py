@@ -7,13 +7,26 @@ from sklearn.pipeline import Pipeline
 import joblib
 import pandas as pd
 from sklearn.metrics import mean_absolute_error
+import os
 
-dagshub.init(repo_owner='Ubaidmalik9567',
-             repo_name='delivery-time-prediction',
-             mlflow=True)
+dagshub_token = os.getenv("DAGSHUB_PAT")
 
-# set the mlflow tracking server
-mlflow.set_tracking_uri("https://dagshub.com/Ubaidmalik9567/delivery-time-prediction.mlflow")
+if not dagshub_token:
+    raise EnvironmentError("DAGSHUB_PAT environment variable is not set")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "Ubaidmalik9567"
+repo_name = "delivery-time-prediction"
+
+# Set up MLflow tracking URI
+mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
+
+# dagshub.init(repo_owner='Ubaidmalik9567',repo_name='delivery-time-prediction',mlflow=True)
+# # set the mlflow tracking server
+# mlflow.set_tracking_uri("https://dagshub.com/Ubaidmalik9567/delivery-time-prediction.mlflow")
 
 def load_model_information(file_path):
     with open(file_path) as f:

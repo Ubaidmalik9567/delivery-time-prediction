@@ -11,18 +11,31 @@ from sklearn import set_config
 from scripts.data_clean_utils import perform_data_cleaning
 import dagshub
 import mlflow.client
+import os
 
 # set the output as pandas
 set_config(transform_output='pandas')
 
-# initialize dagshub
 
-dagshub.init(repo_owner='Ubaidmalik9567',
-             repo_name='delivery-time-prediction',
-             mlflow=True)
+dagshub_token = os.getenv("DAGSHUB_PAT")
 
-# set the mlflow tracking server
-mlflow.set_tracking_uri("https://dagshub.com/Ubaidmalik9567/delivery-time-prediction.mlflow")
+if not dagshub_token:
+    raise EnvironmentError("DAGSHUB_PAT environment variable is not set")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "Ubaidmalik9567"
+repo_name = "delivery-time-prediction"
+
+# Set up MLflow tracking URI
+mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
+
+# # initialize dagshub
+# dagshub.init(repo_owner='Ubaidmalik9567',repo_name='delivery-time-prediction',mlflow=True)
+# # set the mlflow tracking server
+# mlflow.set_tracking_uri("https://dagshub.com/Ubaidmalik9567/delivery-time-prediction.mlflow")
 
 
 class Data(BaseModel):  
