@@ -56,5 +56,20 @@ jobs:
         run: |
           python scripts/promote_model_to_prod.py
       
+      
+      - name: Log in to Docker Hub
+        if: success()
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }} # ubaidmalik1015
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} # dckr_pat_4VOtpmcHPYQjjELQ-q5R9xcuwrU
 
-     
+      - name: Build Docker image
+        if: success()
+        run: |
+          docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/delivery_time_pred_model:latest .
+
+      - name: Push Docker image to Docker Hub
+        if: success()
+        run: |
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/delivery_time_pred_model:latest
