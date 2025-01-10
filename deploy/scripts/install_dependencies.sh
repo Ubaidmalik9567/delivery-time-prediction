@@ -1,6 +1,3 @@
-# in this file write all commands which we need to installation when ec2 instace
-# create .. that we already we if we notice 
-
 #!/bin/bash
 
 # Ensure that this script runs in non-interactive mode

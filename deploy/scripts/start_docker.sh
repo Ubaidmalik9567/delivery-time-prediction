@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# or can you this if above not working
 aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 730335254649.dkr.ecr.eu-north-1.amazonaws.com
-docker pull 730335254649.dkr.ecr.eu-north-1.amazonaws.com/yt-comments-sentiment-analysis:latest
+docker pull 730335254649.dkr.ecr.eu-north-1.amazonaws.com/delivery_time_pred_model:latest
 
 # Check if the container 'my-app' is running
 if [ "$(docker ps -q -f name=my-app)" ]; then
