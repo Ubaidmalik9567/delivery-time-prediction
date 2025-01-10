@@ -4,7 +4,7 @@ aws ecr get-login-password --region eu-north-1 | docker login --username AWS --p
 docker pull 730335254649.dkr.ecr.eu-north-1.amazonaws.com/delivery_time_pred_model:latest
 
 # Check if the container 'my-app' is running
-if [ "$(docker ps -q -f name=my-app)" ]; then
+if [ "$(docker ps -q -Deploy Image Docker Hub to EC2f name=my-app)" ]; then
     # Stop the running container
     docker stop my-app
 fi
