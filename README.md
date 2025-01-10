@@ -37,9 +37,9 @@ This project was built using **MLOps** techniques for seamless integration, mode
 - **MLflow**: Used for model tracking, logging, and managing experiment results.
 - **FastAPI**: Used for building the RESTful API that serves the prediction model.
 - **Docker**: Utilized for containerizing the application for consistent deployment across environments.
-- **AWS CodeDeploy**: Used for automating application deployments to AWS infrastructure.
+- **AWS**: Used for automating application deployments to AWS infrastructure.
 
 ## Conclusion
-By predicting delivery times accurately, this project aims to enhance customer experience, improve operational efficiency, and maximize financial optimization. The implementation of this model will drive strategic decision-making, improve service quality, and contribute to cost-effective scaling in the competitive food delivery industry.
+By predicting delivery times accurately, this project aims to enhance customer experience, improve operational efficiency, and maximize financial optimization. The implementation of this model will drive strategic decision-making, improve service quality, and contribute to cost-effective scaling in the competitive delivery industry.
 
 ---
