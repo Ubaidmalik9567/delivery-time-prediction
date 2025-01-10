@@ -109,7 +109,7 @@ app = FastAPI()
 # create the home endpoint
 @app.get(path="/")
 def home():
-    return "Welcome to the Swiggy Food Delivery Time Prediction App"
+    return "Welcome to the Delivery Time Prediction App"
 
 # create the predict endpoint
 @app.post(path="/predict")
