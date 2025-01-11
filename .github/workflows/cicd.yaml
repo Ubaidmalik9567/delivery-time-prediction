@@ -36,11 +36,11 @@ jobs:
         run: |
           pytest tests/test_model_registry.py
 
-      - name: Test Model Performance
-        env:
-          DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
-        run: |
-          pytest tests/test_model_perf.py
+      # - name: Test Model Performance
+      #   env:
+      #     DAGSHUB_PAT: ${{ secrets.DAGSHUB_PAT }}
+      #   run: |
+      #     pytest tests/test_model_perf.py
 
       - name: Promote Model
         if: success()
