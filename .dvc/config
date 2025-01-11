@@ -1,6 +1,2 @@
-[core]
-    remote = ubaid_dtp
 ['remote "ubaid"']
     url = ../tmp
-['remote "ubaid_dtp"']
-    url = s3://delivery-time-prediction

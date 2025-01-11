@@ -30,7 +30,7 @@ stages:
     params:
       params.yaml:
         Data_Preparation.random_state: 42
-        Data_Preparation.test_size: 0.2
+        Data_Preparation.test_size: 0.3
     outs:
     - path: data/interim/test.csv
       hash: md5
@@ -130,8 +130,8 @@ stages:
       size: 157982920
     - path: src/models/predict_model.py
       hash: md5
-      md5: f7d897421bacc1b1a56d3bb6dfb2f1f1
-      size: 5858
+      md5: 78611fe37d6f555d8f26b0b080ab2aae
+      size: 6091
     outs:
     - path: run_information.json
       hash: md5
@@ -146,5 +146,5 @@ stages:
       size: 216
     - path: src/models/register_model.py
       hash: md5
-      md5: fd6b7755da32b1d2834d502b7fcb77ac
-      size: 2100
+      md5: 7268bc8fe60069be11b89ee610c1f39a
+      size: 2320
