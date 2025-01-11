@@ -244,7 +244,7 @@ if __name__ == "__main__":
     cleaned_data_filename = "swiggy_cleaned.csv"
 
     cleaned_data_save_path = cleaned_data_save_dir / cleaned_data_filename
-    data_load_path = root_path / "data" / "raw" / "swiggy.csv"
+    data_load_path = "https://drive.google.com/file/d/1wZLNp5m-v-loQaDo9d8s4X6cqc7aKca7/view?usp=sharing" # root_path / "data" / "raw" / "swiggy.csv"
     
     df = load_data(data_load_path)
     logger.info("Data read successfully")
