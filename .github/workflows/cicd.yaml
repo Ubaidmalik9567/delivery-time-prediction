@@ -22,14 +22,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements-dockers.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements-dev.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
       - name: Install necessary project development dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements-dockers.txt
+          pip install -r requirements-dev.txt
 
       - name: Run DVC pipeline
         env:
