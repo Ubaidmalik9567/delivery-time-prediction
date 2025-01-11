@@ -27,7 +27,7 @@ def load_model_information(file_path):
     return run_info
 
 # set model name
-model_name = load_model_information("run_information.json")["model_name"]
+model_name = load_model_information("reports/run_information.json")["model_name"]
 
 
 

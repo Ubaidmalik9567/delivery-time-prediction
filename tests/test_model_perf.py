@@ -40,7 +40,7 @@ def load_transformer(transformer_path):
     return transformer
 
 # set model name
-model_name = load_model_information("run_information.json")["model_name"]
+model_name = load_model_information("reports/run_information.json")["model_name"]
 stage = "Staging"
 
 # load the model
